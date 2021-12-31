@@ -20,7 +20,7 @@ static struct cdev cdv;
 static struct class *cls = NULL;
 
 static volatile u32 *gpio_base = NULL;
-static int list[num] = {24, 25, 26};
+static int GPIO_order[num] = {24, 25, 26};
 
 static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_t* pos)
 {
@@ -30,61 +30,61 @@ static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_
                 return -EFAULT;
 
         if(c == '0'){
-                gpio_base[10] = 1 << list[0];  
-                gpio_base[10] = 1 << list[1];  
-                gpio_base[10] = 1 << list[2];  
-                gpio_base[10] = 1 << list[3];  
+                gpio_base[10] = 1 << GPIO_order[0];
+                gpio_base[10] = 1 << GPIO_order[1];
+                gpio_base[10] = 1 << GPIO_order[2];
+                gpio_base[10] = 1 << GPIO_order[3];
                 }
 
          if(c == '1'){
 
-                gpio_base[7] = 1 << list[2];
+                gpio_base[7] = 1 << GPIO_order[2];
 
                 while(i < 10){
-                        gpio_base[7] = 1 << list[0];
-                        gpio_base[7] = 1 << list[1];
+                        gpio_base[7] = 1 << GPIO_order[0];
+                        gpio_base[7] = 1 << GPIO_order[1];
                         msleep(100);
-                        gpio_base[10] = 1 << list[0];
-                        gpio_base[7] = 1 << list[1];
+                        gpio_base[10] = 1 << GPIO_order[0];
+                        gpio_base[7] = 1 << GPIO_order[1];
                         msleep(100);
-                        gpio_base[10] = 1 << list[1];
-                        gpio_base[7] = 1 << list[0];
+                        gpio_base[10] = 1 << GPIO_order[1];
+                        gpio_base[7] = 1 << GPIO_order[0];
                         msleep(100);
-                        gpio_base[10] = 1 << list[0];
-                        gpio_base[10] = 1 << list[1];
+                        gpio_base[10] = 1 << GPIO_order[0];
+                        gpio_base[10] = 1 << GPIO_order[1];
 
-                        gpio_base[7] = 1 << list[0];
-                        gpio_base[7] = 1 << list[1];
+                        gpio_base[7] = 1 << GPIO_order[0];
+                        gpio_base[7] = 1 << GPIO_order[1];
                         msleep(300);
-                        gpio_base[10] = 1 << list[0];
-                        gpio_base[10] = 1 << list[1];
+                        gpio_base[10] = 1 << GPIO_order[0];
+                        gpio_base[10] = 1 << GPIO_order[1];
                         msleep(500);
                         i++;
                         }
 
               while(j < 10){
-                        gpio_base[7] = 1 << list[0];
-                        gpio_base[7] = 1 << list[1];
+                        gpio_base[7] = 1 << GPIO_order[0];
+                        gpio_base[7] = 1 << GPIO_order[1];
                         msleep(10*j);
-                        gpio_base[10] = 1 << list[0];
-                        gpio_base[10] = 1 << list[1];
+                        gpio_base[10] = 1 << GPIO_order[0];
+                        gpio_base[10] = 1 << GPIO_order[1];
                         msleep(10*j);
-                        gpio_base[7] = 1 << list[1];
-                        gpio_base[7] = 1 << list[0];
+                        gpio_base[7] = 1 << GPIO_order[1];
+                        gpio_base[7] = 1 << GPIO_order[0];
                         msleep(50);
-                        gpio_base[10] = 1 << list[0];
-                        gpio_base[10] = 1 << list[1];
+                        gpio_base[10] = 1 << GPIO_order[0];
+                        gpio_base[10] = 1 << GPIO_order[1];
                         msleep(50);
-                        gpio_base[7] = 1 << list[0];
-                        gpio_base[7] = 1 << list[1];
+                        gpio_base[7] = 1 << GPIO_order[0];
+                        gpio_base[7] = 1 << GPIO_order[1];
                         msleep(50);
-                        gpio_base[10] = 1 << list[0];
-                        gpio_base[10] = 1 << list[1];
+                        gpio_base[10] = 1 << GPIO_order[0];
+                        gpio_base[10] = 1 << GPIO_order[1];
                         msleep(1);
                         j++;
                         }
 
-              gpio_base[10] = 1 << list[2];
+              gpio_base[10] = 1 << GPIO_order[2];
 
       }
         return 1;
@@ -104,7 +104,7 @@ static int __init init_mod(void)
         gpio_base = ioremap_nocache(0xfe200000, 0xA0); //0xfe..:base address, 0xA0: region to map
 
         for(i=0;i< num;i++){
-            const u32 led = list[i];
+            const u32 led = GPIO_order[i];
             const u32 index = led/10;
             const u32 shift = (led%10)*3;
             const u32 mask = ~(0x7 << shift);
