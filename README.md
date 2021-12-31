@@ -71,3 +71,7 @@ $ make clean
 [GNU General Public License v3.0](https://github.com/NaokiIwasawa/2021_Robosys_theme1/blob/master/LICENSE)
 
 電子メロディーの『エリーゼのために』は作曲家ルートヴィヒ・ヴァン・ベートーヴェンの死後70年を過ぎるため著作権は保護期間を過ぎている
+
+## Acknowledgment
+複数のLEDを光らせる際の参考にさせていただきました。ありがとうございます
+[参考にしたリポジトリ](https://github.com/HarukiOgawa1/Robosys2021_devicedriver)
