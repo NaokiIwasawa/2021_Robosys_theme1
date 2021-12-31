@@ -48,6 +48,8 @@ $ sudo chmod 666 /dev/myled0
 ```
 $ echo 1 > /dev/myled0
 ```
+[![movie](https://user-images.githubusercontent.com/71487827/147806212-27e7805f-1961-47e5-b325-2a934b141379.jpg)](https://www.youtube.com/watch?v=vOSwD2V_tys)
+
 1.  LEDが点滅しコンデンサーの充電が行われる
 2.  コンデンサーの充電がある程度進むとメロディーが鳴り始める
 3.  メロディーが安定してくると充電が完了
@@ -60,7 +62,6 @@ $ echo 1 > /dev/myled0
 $ echo 0 > /dev/myled0
 $ sudo rmmod myled
 $ make clean
-
 ```
 
 ## License
