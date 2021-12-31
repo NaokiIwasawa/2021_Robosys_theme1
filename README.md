@@ -1,6 +1,8 @@
 # 2021_Robosys_theme1
 4sロボットシステム学課題1_提出用（Lチカとコンデンサー充電式電子メロディー）
 
+---
+
 ## Outline
 上田先生（千葉工業大学未来ロボティクス学科）の講義内容に沿って作成したデバイスドライバを用いてLED点灯とコンデンサーを用いた電子メロディーを聞くことが出来る
 
@@ -49,6 +51,7 @@ $ sudo chmod 666 /dev/myled0
 $ echo 1 > /dev/myled0
 ```
 [![movie](https://user-images.githubusercontent.com/71487827/147806212-27e7805f-1961-47e5-b325-2a934b141379.jpg)](https://www.youtube.com/watch?v=vOSwD2V_tys)
+※画像をクリックするとYouTubeに飛びます
 
 1.  LEDが点滅しコンデンサーの充電が行われる
 2.  コンデンサーの充電がある程度進むとメロディーが鳴り始める
