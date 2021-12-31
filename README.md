@@ -38,11 +38,13 @@ Ubuntu 20.04.3 LTS
 $ git clone git@github.com:NaokiIwasawa/2021_Robosys_theme1.git
 $ cd play
 $ make
-$ suod insmod myled.ko
+$ sudo insmod myled.ko
 $ sudo chmod 666 /dev/myled0
 ```
 ---
+
 ## Play
+
 ```
 $ echo 1 > /dev/myled0
 ```
@@ -56,6 +58,9 @@ $ echo 1 > /dev/myled0
 ## Finish
 ```
 $ echo 0 > /dev/myled0
+$ sudo rmmod myled
+$ make clean
+
 ```
 
 ## License

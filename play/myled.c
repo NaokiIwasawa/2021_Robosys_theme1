@@ -1,4 +1,6 @@
-nclude <linux/module.h>
+//SPDX - License - Identifier : GPL - 3.0
+//*Copyright (c) 2021 Ryuichi Ueda and Naoki Iwasawa. All rights reserved
+#include <linux/module.h>
 #include <linux/fs.h>
 #include <linux/cdev.h>
 #include <linux/device.h>
